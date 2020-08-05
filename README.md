@@ -1,9 +1,9 @@
-${moduleName}
+Cross-border addon Module for KenyaEMR
 ==========================
 
 Description
 -----------
-This is a very basic module which can be used as a starting point in creating a new module.
+An addon module which contains cross-border artifacts for KenyaEMR i.e. Mobility screening form, Clinical referreal form, Cross border indicator report.
 
 Building from Source
 --------------------
