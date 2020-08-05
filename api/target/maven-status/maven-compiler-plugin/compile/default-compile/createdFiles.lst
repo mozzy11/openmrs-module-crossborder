@@ -1,0 +1,13 @@
+org\openmrs\module\crossborder\metadata\CommonMetadata$_OrderType.class
+org\openmrs\module\crossborder\api\CrossbordermoduleforOpenMRSService.class
+org\openmrs\module\crossborder\api\dao\CrossbordermoduleforOpenMRSDao.class
+org\openmrs\module\crossborder\CrossbordermoduleforOpenMRSActivator.class
+org\openmrs\module\crossborder\reporting\builder\CrossborderIndicatorReportBuilder.class
+org\openmrs\module\crossborder\Item.class
+org\openmrs\module\crossborder\metadata\CommonMetadata$_EncounterType.class
+org\openmrs\module\crossborder\metadata\CommonMetadata$_Form.class
+org\openmrs\module\crossborder\api\impl\CrossbordermoduleforOpenMRSServiceImpl.class
+org\openmrs\module\crossborder\reporting\library\CrossborderIndicatorLibrary.class
+org\openmrs\module\crossborder\metadata\CommonMetadata.class
+org\openmrs\module\crossborder\CrossbordermoduleforOpenMRSConfig.class
+org\openmrs\module\crossborder\reporting\library\CrossborderCohortLibrary.class

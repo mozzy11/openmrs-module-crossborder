@@ -1,0 +1,2 @@
+org\openmrs\module\crossborder\api\CrossbordermoduleforOpenMRSServiceTest.class
+org\openmrs\module\crossborder\api\dao\CrossbordermoduleforOpenMRSDaoTest.class

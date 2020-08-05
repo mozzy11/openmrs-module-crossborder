@@ -1,0 +1,176 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+-->
+<htmlform>
+
+    <script type="text/javascript">
+
+        jQuery(function () {
+            //limit letters only in text field
+            jQuery('#rsn').keypress(function(event) {
+            var code = (event.keyCode ? event.keyCode : event.which);
+            //alert(code)
+            if (code &gt;= 48  &amp;&amp; code &lt;= 57) //numbers
+                event.preventDefault();
+            });
+            
+            let currentFacilityName = '<lookup expression="fn.location('GlobalProperty:kenyaemr.defaultLocation').name"/>';
+            setValue('referring-facility.value', currentFacilityName);
+                        
+        });
+    </script>
+
+    <div class="ke-form-header">
+        <table style="width: 100%">
+            <tr>
+                <td align="left">Date:
+                    <encounterDate id="encounter-date" showTime="true"/>
+                </td>
+                <td align="right">Location:
+                    <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ke-form-content">
+        <fieldset>
+            <legend>Client personal identification</legend>
+
+            <table>
+                <tr>
+                    <td>Nationality</td>
+                    <td>
+                                <obs conceptId="5000023" labelText=" "
+                                     answerConceptIds="5000024,5000025,5000026,5000027,5000028,5000029,5622"
+                                     style="dropdown"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Referring facility name</td>
+                    <td>
+                                <obs conceptId="161550" labelText=" " id="referring-facility" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Referred facility name</td>
+                    <td>
+                        <obs conceptId="162724" labelText=" "/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Type of care</td>
+                    <td>
+                                <obs conceptId="5000030" labelText=" "
+                                     answerConceptIds="160631,5000032,160541,5483,159937,5000031,160546,5622"
+                                     answerLabels="TB/HIV,ART,TB,FP/RH,MNCH/ANC,GBV,STI,Other"
+                                     style="dropdown" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date of referral</td>
+                    <td>
+                                <obs conceptId="163181" labelText=" "
+                                     allowFutureDates="false"
+                                     allowTime="false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>CB-HIPP Site</td>
+                    <td>
+                                <obs conceptId="5000000" labelText=" "
+                                     answerConceptIds="5000001,5000004,5000003,5000005,5000033,5000006,5000034,5000035,5000036,5000037,5000038,5000039,5000040,5000041,5000042"
+                                     style="dropdown" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Target Population</td>
+                    <td>
+                                <obs conceptId="5000022" labelText=" "
+                                     answerConceptIds="165083,162198,5000021,159674,160578,5000020,165090,6096,5622"
+                                     style="dropdown" />
+                    </td>
+                </tr>
+           </table>
+       </fieldset>
+       
+       <fieldset>
+			<legend>Reason for referral</legend>  
+			
+			<table>     
+                <tr>
+                    <td>Reason for referral</td>
+                    <td>
+                                <obs conceptId="1887" labelText=" "
+                                	answerConceptIds="160631,160541,5483,159937,5000031,160546,5000032,5622"
+                                    answerLabels="TB/HIV,ART,TB,FP/RH,MNCH/ANC,GBV,STI,Other"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>General comments if referred for ART</td>
+                    <td>
+                                <obs conceptId="161011" labelText=" "
+                                	rows="5"
+                                	cols="60"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Referral Recommendations:</td>
+                    <td>
+                                <obs conceptId="5000043" labelText=" "                                	
+                                	rows="5"
+                                	cols="60"/>
+
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Referring Health Care Provider</legend>
+
+            <table>
+                <tr>
+                    <td>Full name</td>
+                    <td>
+                        <encounterProvider default="currentUser" id="encounterProvider"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <obs conceptId="5000045" labelText=" "/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Telephone number</td>
+                    <td>
+                        <obs conceptId="5000046" labelText=" "/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cadre</td>
+                    <td>
+                        <obs conceptId="5000047" labelText=" "/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+    </div>
+
+    <div class="ke-form-footer">
+        <submit/>
+    </div>
+
+</htmlform>

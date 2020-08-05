@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This Source Code Form is subject to the terms of the Mozilla Public License,
+    v. 2.0. If a copy of the MPL was not distributed with this file, You can
+    obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+    the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+
+    Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+    graphic logo is a trademark of OpenMRS Inc.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- ===================== Configurations ===================== -->
+
+		<bean id="kenyaemr.config.form" class="org.openmrs.module.kenyacore.form.FormConfiguration">
+			<property name="commonVisitForms">
+				<set>
+					<ref bean="kenyaemr.crossborder.form.mobilityScreening"/>
+					<ref bean="kenyaemr.crossborder.form.interfacilityReferral"/>
+				</set>
+			</property>
+		</bean>
+
+       <!-- Cross border forms -->
+       <bean id="kenyaemr.crossborder.form.mobilityScreening" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+               <property name="targetUuid" value="95ab6ce7-01ea-4a14-af12-fe4eada31081" />
+               <property name="apps">
+                       <set>
+                               <ref bean="kenyaemr.app.registration" />
+                               <ref bean="kenyaemr.app.clinician" />
+                               <ref bean="kenyaemr.app.chart" />
+                               <ref bean="kenyaemr.app.crossborder" />
+                       </set>
+               </property>
+               <property name="icon" value="kenyaui:forms/generic.png" />
+               <property name="htmlform" value="crossborder:crossborder/mobilityScreening.html" />
+               <property name="order" value="200056" />
+       </bean>
+       
+       <bean id="kenyaemr.crossborder.form.interfacilityReferral" class="org.openmrs.module.kenyacore.form.FormDescriptor">
+               <property name="targetUuid" value="ec42630e-ac96-45c9-877e-f412793a582f" />
+               <property name="apps">
+                       <set>
+                               <ref bean="kenyaemr.app.registration" />
+                               <ref bean="kenyaemr.app.clinician" />
+                               <ref bean="kenyaemr.app.chart" />
+                               <ref bean="kenyaemr.app.crossborder" />
+                       </set>
+               </property>
+               <property name="icon" value="kenyaui:forms/generic.png" />
+               <property name="htmlform" value="crossborder:crossborder/interfacilityReferral.html" />
+               <property name="order" value="200057" />
+       </bean>
+
+		<!-- Cross border indicator report-->
+		<bean id="crossborder.report.indicatorsreport" class="org.openmrs.module.kenyacore.report.IndicatorReportDescriptor">
+			<property name="targetUuid" value="9f8bdcac-f03f-41ef-ab7e-89490365cf52" />
+			<property name="name" value="Crossborder Indicator Report" />
+			<property name="description" value="Crossborder Indicator Report" />
+			<property name="apps">
+				<set>
+					<ref bean="kenyaemr.app.reports" />
+				</set>
+			</property>
+			<property name="template" value="crossborder:cb_indicator_report_template.xls" />
+		</bean>
+
+		<bean id="crossborder.config.report" class="org.openmrs.module.kenyacore.report.ReportConfiguration">
+			<property name="commonReports">
+				<set>
+					<ref bean="crossborder.report.indicatorsreport" />
+				</set>
+			</property>
+		</bean>
+       
+</beans>

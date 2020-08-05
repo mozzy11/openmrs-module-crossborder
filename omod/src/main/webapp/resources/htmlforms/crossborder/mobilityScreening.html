@@ -1,0 +1,188 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+-->
+<htmlform>
+
+    <script type="text/javascript">
+
+        jQuery(function () {
+
+            //limit letters only in text field
+            jQuery('textarea').keypress(function(event) {
+            var code = (event.keyCode ? event.keyCode : event.which);
+            //alert(code)
+            if (code &gt;= 48  &amp;&amp; code &lt;= 57) //numbers
+                event.preventDefault();
+            });
+
+        });
+    </script>
+
+    <div class="ke-form-header">
+        <table style="width: 100%">
+            <tr>
+                <td align="left">Date:
+                    <encounterDate id="encounter-date" showTime="true"/>
+                </td>
+                <td align="right">Location:
+                    <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="ke-form-content">
+        <fieldset>
+            <legend></legend>
+
+            <table>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                                <obs conceptId="5000008" labelText=" "
+                                     answerConceptIds="162883,162884"
+                                     style="radio"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Site</td>
+                    <td>
+                                <obs conceptId="5000000" labelText=" "
+                                     answerConceptIds="5000001,5000004,5000007,5000003,5000005,5000006,5000002"
+                                     style="dropdown"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Facility Name:</td>
+                    <td>
+                        <lookup expression="fn.location('GlobalProperty:kenyaemr.defaultLocation').name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Facility MFL:</td>
+                    <td>
+                        <lookup expression="fn.globalProperty('kenyaemr.defaultLocation')" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Visit Type</td>
+                    <td>
+                                <obs conceptId="164181" labelText=" "
+                                     answerConceptIds="164180,160530"
+                                     style="radio" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Residence(From locator information)</legend>
+
+            <table>
+                <tr>
+                    <td>County:</td>
+                    <td>
+                        <span id="county"><lookup expression="patient.personAddress.countyDistrict"/></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Village:</td>
+                    <td>
+                    	<span id="village"><lookup expression="patient.personAddress.CityVillage"/></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nearest Landmark:</td>
+                    <td>
+                        <span id="landmark"><lookup expression="patient.personAddress.address2"/></span>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend></legend>
+
+            <table>
+                <tr>
+                    <td>Nationality</td>
+                    <td>
+                                <obs conceptId="5000023" labelText=" "
+                                     answerConceptIds="5000024,5000025,5000026,5000027,5000028,5000029,5622"
+                                     style="dropdown"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Target population</td>
+                    <td>
+                                <obs conceptId="5000022" labelText=" "
+                                     answerConceptIds="165083,162198,5000021,159674,160578,5000020,165090,1169,5622"
+                                     style="dropdown"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Have you travelled to another country in the last 3 months?</td>
+                    <td>
+                                <obs conceptId="5000013" labelText=" "
+                                     answerConceptIds="1065,1066"
+                                     style="radio"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Have you travelled to another country in the last 6 months?</td>
+                    <td>
+                                <obs conceptId="5000014" labelText=" "
+                                     answerConceptIds="1065,1066"
+                                     style="radio"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Have you travelled to another country in the last 12 months?</td>
+                    <td>
+                                <obs conceptId="5000015" labelText=" "
+                                     answerConceptIds="1065,1066"
+                                     style="radio"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>How long (in days) did you stay last time you travelled to another country?</td>
+                    <td>
+                        <obs conceptId="5000016"/>
+                    </td>
+               </tr>
+                <tr>
+                    <td>How frequently do you travel to another country?</td>
+                    <td>
+                                <obs conceptId="5000018" labelText=" "
+                                     answerConceptIds="1100,1099,1098,5000019,1090,5622"
+                                     style="dropdown"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Service</td>
+                    <td>
+                                <obs conceptId="5000030" labelText=" "
+                                     answerConceptIds="165216,5000032,160541,5483,159937,5000031,160546,5622"
+                                     answerLabels="HTS,ART,TB,FP/RH,MNCH/ANC,GBV,STI,Other"
+                                     style="dropdown"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+    <div class="ke-form-footer">
+        <submit/>
+    </div>
+
+</htmlform>

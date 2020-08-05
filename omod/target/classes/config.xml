@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This Source Code Form is subject to the terms of the Mozilla Public License,
+    v. 2.0. If a copy of the MPL was not distributed with this file, You can
+    obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+    the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+
+    Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+    graphic logo is a trademark of OpenMRS Inc.
+
+-->
+
+<module configVersion="1.2">
+	
+	<!-- Base Module Properties -->
+	<id>crossborder</id>
+	<name>Cross border module for OpenMRS</name>
+	<version>1.0.0-SNAPSHOT</version>
+	<package>org.openmrs.module.crossborder</package>
+	<author>k</author>
+	<description>
+			Cross border module for OpenMRS
+	</description>
+
+	<activator>org.openmrs.module.crossborder.CrossbordermoduleforOpenMRSActivator</activator>
+	
+	<!-- <updateURL>https://modules.openmrs.org/modules/download/crossborder/update.rdf</updateURL> -->
+	<!-- /Base Module Properties -->
+	
+	<require_version>1.12.0</require_version>
+
+	<aware_of_modules>
+		<aware_of_module>org.openmrs.module.legacyui</aware_of_module>
+	</aware_of_modules>
+
+
+	<require_modules>
+	  	<require_module version="17.1.0">org.openmrs.module.kenyaemr</require_module>
+		<require_module version="2.2.1">org.openmrs.module.appframework</require_module>
+		<require_module version="1.1">org.openmrs.calculation</require_module>
+		<require_module version="3.8.0">org.openmrs.module.htmlformentry</require_module>
+		<require_module version="2.6">org.openmrs.module.idgen</require_module>
+		<require_module version="2.4.1">org.openmrs.module.kenyacore</require_module>
+		<require_module version="2.1.2">org.openmrs.module.kenyaui</require_module>
+		<require_module version="1.1.8">org.openmrs.module.metadatasharing</require_module>
+		<require_module version="0.9.8.1">org.openmrs.module.reporting</require_module>
+		<require_module version="${groovyVersion}">org.openmrs.module.groovy</require_module>
+		<require_module version="3.8">org.openmrs.module.uiframework</require_module>
+		<require_module version="${kenyaemrOrderentryVersion}">org.openmrs.module.kenyaemrorderentry</require_module>
+		<require_module version="${registrationCoreVersion}">org.openmrs.module.registrationcore</require_module>
+	</require_modules>	
+		
+	
+	<!-- Internationalization -->
+	<!-- All message codes should start with crossborder.* -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+	
+</module>
+
