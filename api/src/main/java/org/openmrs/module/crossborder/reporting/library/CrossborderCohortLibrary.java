@@ -10,6 +10,11 @@ import org.openmrs.module.kenyaemr.reporting.library.moh731.Moh731CohortLibrary;
 import org.openmrs.module.kenyaemr.reporting.library.shared.common.CommonCohortLibrary;
 import org.openmrs.module.kenyaemr.reporting.library.shared.hiv.HivCohortLibrary;
 import org.openmrs.module.kenyaemr.reporting.library.shared.hiv.art.ArtCohortLibrary;
+import org.openmrs.module.kenyaemr.reporting.cohort.definition.HTSClientsCohortDefinition;
+import org.openmrs.module.kenyaemr.reporting.cohort.definition.HTSPositiveResultsCohortDefinition;
+import org.openmrs.module.kenyaemr.reporting.cohort.definition.ETLNewHivEnrollmentCohortDefinition;
+import org.openmrs.module.kenyaemr.reporting.cohort.definition.ETLCurrentOnARTCohortDefinition;
+import org.openmrs.module.kenyaemr.reporting.library.ETLReports.RevisedDatim.DatimCohortLibrary;
 import org.openmrs.module.metadatadeploy.MetadataUtils;
 import org.openmrs.module.reporting.cohort.definition.CohortDefinition;
 import org.openmrs.module.reporting.cohort.definition.CompositionCohortDefinition;
@@ -36,6 +41,9 @@ public class CrossborderCohortLibrary {
 	
 	@Autowired
 	private Moh731CohortLibrary moh731CohortLibrary;
+
+    @Autowired
+	DatimCohortLibrary datimCohortLibrary ;
 	
 	public CohortDefinition cbOtherNationalities() {
 		String sqlQuery = "" + "SELECT " + "	DISTINCT patient_id " + "FROM "
@@ -48,6 +56,120 @@ public class CrossborderCohortLibrary {
 		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
 		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
 		cd.setDescription("Patients of other nationalities");
+		return cd;
+	}
+
+	public CohortDefinition otherNationalitiesAccesingFpServices() {
+		String sqlQuery = "SELECT DISTINCT patient_id " 
+		                 + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening" 
+		                 + "WHERE service = 'FP' "
+		                 + "AND visit_date BETWEEN :startDate AND :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("patientsOfOtherNationalitiesFP");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("Patients of other nationalities Accesing FP services");
+		return cd;
+	}
+	
+
+	public CohortDefinition cbOtherNationalitiesAccesingFpServices() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("CrossborderpatientAccesingFPservices");
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("AccesFPservices",
+		    ReportUtils.map(otherNationalitiesAccesingFpServices(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND AccesFPservices");
+		return cd;
+	}
+	
+
+
+	
+	public CohortDefinition otherNationalitiesAccesingMCHServices() {
+		String sqlQuery = "SELECT DISTINCT patient_id " 
+		                 + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening" 
+		                 + "WHERE service = 'MCH' "
+		                 + "AND visit_date BETWEEN :startDate AND :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("patientsOfOtherNationalitiesMCH");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("Patients of other nationalities");
+		return cd;
+	}
+
+	public CohortDefinition cbOtherNationalitiesAccesingMCHServices() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("CrossBorderPatientAccesingMCHServices");
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("AccesMCHservices",
+		    ReportUtils.map(otherNationalitiesAccesingMCHServices(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND AccesMCHservices");
+		return cd;
+	}
+
+	public CohortDefinition otherNationalitiesAccesingHIVServices() {
+		String sqlQuery = "SELECT DISTINCT patient_id " 
+		                 + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening" 
+		                 + "WHERE service = 'HIV' "
+		                 + "AND visit_date BETWEEN :startDate AND :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("patientsOfOtherNationalitiesHIV");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("Patients of other nationalities");
+		return cd;
+	}
+
+
+	public CohortDefinition cbOtherNationalitiesAccesingHIVServices() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("CrossborderPatientsAccesingHIVServices");
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("AccesHIVservices",
+		    ReportUtils.map(otherNationalitiesAccesingHIVServices(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND AccesHIVservices");
+		return cd;
+	}
+
+
+	public CohortDefinition otherNationalitiesAccesingTBServices() {
+		String sqlQuery = "SELECT DISTINCT patient_id " 
+		                 + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening" 
+		                 + "WHERE service = 'TB' "
+		                 + "AND visit_date BETWEEN :startDate AND :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("patientsOfOtherNationalitiesTB");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("Patients of other nationalities");
+		return cd;
+	}
+
+	public CohortDefinition cbOtherNationalitiesAccesingTBServices() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("CrossborderpatientAccesingTBservices");
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("AccesTBservices",
+		    ReportUtils.map(otherNationalitiesAccesingHIVServices(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND AccesTBservices");
 		return cd;
 	}
 	
@@ -84,6 +206,93 @@ public class CrossborderCohortLibrary {
 		return cd;
 		
 	}
+
+	public CohortDefinition travelledOtherCountryLastThreeMonths() {
+		String sqlQuery = ""
+		        + "SELECT 	DISTINCT patient_id"
+		        + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
+		        + "WHERE `travelled_in_last_3_months` = 'Yes'"
+		        + "AND visit_date BETWEEN :startDate AND :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("travelledOtherCountryLastThreeMonths");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("Travelled to other country Last Three Months");
+		return cd;
+		
+	}
+
+	public CohortDefinition cbTravelledOtherCountryLastThreeMonths() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("travelledOtherCountryLastThreeMonths");
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("TravelledLastThreeMonths",
+		    ReportUtils.map(travelledOtherCountryLastThreeMonths(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND TravelledLastThreeMonths");
+		return cd;
+	}
+
+	public CohortDefinition travelledOtherCountryLastSixMonths() {
+		String sqlQuery = ""
+		        + "SELECT 	DISTINCT patient_id"
+		        + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
+		        + "WHERE `travelled_in_last_6_months` = 'Yes'"
+		        + "AND visit_date BETWEEN :startDate AND :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("travelledOtherCountryLstSixMonths");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("Travelled to other country Last Six Months");
+		return cd;
+		
+	}
+
+	public CohortDefinition cbTravelledOtherCountryLastSixMonths() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("travelledOtherCountryLastSixMonths");
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("TravelledLastSixMonths",
+		    ReportUtils.map(travelledOtherCountryLastSixMonths(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND TravelledLastSixMonths");
+		return cd;
+	}
+
+	public CohortDefinition travelledOtherCountryLastTwelveMonths() {
+		String sqlQuery = ""
+		        + "SELECT 	DISTINCT patient_id"
+		        + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
+		        + "WHERE `travelled_in_last_12_months` = 'Yes'"
+		        + "AND visit_date BETWEEN :startDate AND :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("travelledOtherCountryLastTwelveMonths");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("Travelled to other country Last 12 Months");
+		return cd;
+		
+	}
+
+	public CohortDefinition cbTravelledOtherCountryLastTwelveMonths() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("travelledOtherCountryLastTwelveMonths");
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("TravelledLastTwelveMonths",
+		    ReportUtils.map(travelledOtherCountryLastTwelveMonths(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND TravelledLastTwelveMonths");
+		return cd;
+	}
 	
 	public CohortDefinition crossborderPatients() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
@@ -100,66 +309,49 @@ public class CrossborderCohortLibrary {
 		return cd;
 	}
 	
-	public CohortDefinition receivedHivTestResults() {
-		String sqlQuery = "" + " SELECT " + "	DISTINCT patient_id " + " FROM " + "	kenyaemr_etl.etl_hts_test t" + " WHERE "
-		        + "	t.test_type IN(1,2) AND" + "	t.`patient_given_result` = 'Yes' AND"
-		        + "	t.visit_date BETWEEN :startDate AND :endDate ";
-		
-		SqlCohortDefinition cd = new SqlCohortDefinition();
-		cd.setName("received HIV Test Results");
-		cd.setQuery(sqlQuery);
-		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
-		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
-		cd.setDescription("Received HIV Test Resulsts");
-		return cd;
-	}
-	
 	public CohortDefinition cbReceivedHivTestResults() {
+		HTSClientsCohortDefinition htsClientsdefiniton = new HTSClientsCohortDefinition();
+		htsClientsdefiniton.setName("Recieved HV TestResults");
+		
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Cross border patient Received HIV Results");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
 		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
 		cd.addSearch("receivedHivTestResults",
-		    ReportUtils.map(receivedHivTestResults(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		    ReportUtils.map(htsClientsdefiniton, ""));
 		cd.setCompositionString("crossborder AND receivedHivTestResults");
 		return cd;
 	}
 	
-	public CohortDefinition initiatedOnTreatment() {
-		String sqlQuery = "" + "SELECT " + "	c.patient_id " + "FROM " + "	kenyaemr_etl.`etl_current_in_care` c"
-		        + "INNER JOIN " + "	patient p ON c.patient_id = p.patient_id" + "WHERE " + "	p.voided = 0 AND "
-		        + "	c.`started_on_drugs` = 'Yes'";
-		
-		SqlCohortDefinition cd = new SqlCohortDefinition();
-		cd.setName("Initiated on Treatment");
-		cd.setQuery(sqlQuery);
-		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
-		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
-		cd.setDescription("Initiated On Treatment");
-		return cd;
-		
-	}
-	
 	public CohortDefinition cbInitiatedOnTreatment() {
+        ETLNewHivEnrollmentCohortDefinition newHivEnrollmentCohortDefinition  = new ETLNewHivEnrollmentCohortDefinition(); 
+		newHivEnrollmentCohortDefinition.setName("innitiated On Treatment");
+
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Cross border patient initit");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
 		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
 		cd.addSearch("initiatedTreatment",
-		    ReportUtils.map(initiatedOnTreatment(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		    ReportUtils.map(newHivEnrollmentCohortDefinition, ""));
 		cd.setCompositionString("crossborder AND initiatedTreatment");
 		return cd;
 		
 	}
 	
-	public CohortDefinition testedHivPositive() {
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+	public CohortDefinition cbTestedHivPositive() {
+		HTSPositiveResultsCohortDefinition htsPositiveResultsCorhortDefiniton = new HTSPositiveResultsCohortDefinition();
+		htsPositiveResultsCorhortDefiniton.setName("HV Positive Results");
+		
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("Cross border patient Received HIV Results");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("hivPostiveResults",
+		    ReportUtils.map(htsPositiveResultsCorhortDefiniton, ""));
+		cd.setCompositionString("crossborder AND hivPostiveResults");
 		return cd;
 	}
 	
@@ -172,12 +364,18 @@ public class CrossborderCohortLibrary {
 		return cd;
 	}
 	
-	public CohortDefinition receivingTreatment() {
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+	public CohortDefinition cbReceivingTreatment() {
+		ETLCurrentOnARTCohortDefinition currentOnArtCohortDefinition  = new ETLCurrentOnARTCohortDefinition(); 
+		currentOnArtCohortDefinition.setName("Cuurent On ART");
+
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("Cross border patient initit");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("currentOnArt",
+		    ReportUtils.map(currentOnArtCohortDefinition, ""));
+		cd.setCompositionString("crossborder AND currentOnArt");
 		return cd;
 	}
 	
@@ -227,11 +425,29 @@ public class CrossborderCohortLibrary {
 	}
 
 	public CohortDefinition withPresumptiveTb() {
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		String sqlQuery = "SELECT patient_id"
+						  + "FROM kenyaemr_datatools.tb_screening "
+						  +"WHERE resulting_tb_status = 'Presumed TB' "
+						  +"AND visit_date BETWEEN :startDate and :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("with Presumptive tb Treatment");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("with Presumptive tb Treatment");
+		return cd;
+	}
+
+	public CohortDefinition cbWithPresumptiveTb() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("presumptive TB");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("presumptiveTB",
+		    ReportUtils.map(withPresumptiveTb(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND presumptiveTB");
 		return cd;
 	}
 
@@ -291,11 +507,28 @@ public class CrossborderCohortLibrary {
 	}
 
 	public CohortDefinition initiatedOnTbTreatment() {
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		String sqlQuery = "SELECT patient_id "
+						  +"FROM kenyaemr_datatools.tb_enrollment "
+						  +"WHERE date_treatment_started BETWEEN :startDate and :endDate";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("innitiated on tb Treatment");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("innitiated on tb Treatmentt");
+		return cd;
+	}
+
+	public CohortDefinition cbInitiatedOnTbTreatment() {
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("Innitiated on TB Treatment");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("innitiatedTBTreatment",
+		    ReportUtils.map(initiatedOnTbTreatment(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND innitiatedTBTreatment");
 		return cd;
 	}
 
@@ -434,31 +667,55 @@ public class CrossborderCohortLibrary {
 		return cd;
 	}
 
-	public CohortDefinition indexClients(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+	public CohortDefinition cbIndexClients(){
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("Index Clients");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("indexClients",
+		    ReportUtils.map(datimCohortLibrary.offeredIndexServices(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND indexClients");
 		return cd;
 	}
 
 
-	public CohortDefinition agreedForContactElicitation(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+	public CohortDefinition cbAgreedForContactElicitation(){
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("Agrred For Contact Eliciation");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("contactEliciation",
+		    ReportUtils.map(datimCohortLibrary.acceptedIndexServices(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND contactEliciation");
 		return cd;
 	}
 
 	public CohortDefinition contactsElicited(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		String sqlQuery = "SELECT c.id from kenyaemr_hiv_testing_patient_contact c "
+		+"WHERE c.relationship_type in(971, 972, 1528, 162221, 163565, 970, 5617) "
+		+"AND c.voided = 0 "
+		+"AND date(c.date_created) BETWEEN date_sub( date(:endDate), INTERVAL  3 MONTH )and date(:endDate)";
+		
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("Contacts Elicited");
+		cd.setQuery(sqlQuery);
+		cd.addParameter(new Parameter("startDate", "Start Date", Date.class));
+		cd.addParameter(new Parameter("endDate", "End Date", Date.class));
+		cd.setDescription("Contact Elicited");
+		return cd;
+	}
+
+	public CohortDefinition cbContactsElicited(){
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("Contact Elicited");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("ContactElicited",
+		    ReportUtils.map(contactsElicited(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND ContactElicited");
 		return cd;
 	}
 
@@ -480,12 +737,15 @@ public class CrossborderCohortLibrary {
 		return cd;
 	}
 
-	public CohortDefinition contactsTestingHiv(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+	public CohortDefinition cbContactsTestingHiv(){
+		CompositionCohortDefinition cd = new CompositionCohortDefinition();
+		cd.setName("Contacts Testing Hiv");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("contactTestingHIV",
+		    ReportUtils.map(datimCohortLibrary.knownPositiveContact(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.setCompositionString("crossborder AND contactTestingHIV");
 		return cd;
 	}
 

@@ -17,9 +17,25 @@ public class CrossborderIndicatorLibrary {
 	@Autowired
 	private CrossborderCohortLibrary crossborderCohorts;
 	
-	public CohortIndicator cbOtherNationalities() {
-		return cohortIndicator("Number of other nationalities accessing specified services",
-		    map(crossborderCohorts.cbOtherNationalities(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+	public CohortIndicator cbOtherNationalitiesAccesingFPServices() {
+		return cohortIndicator("Number of other nationalities accessing FP services",
+		    map(crossborderCohorts.cbOtherNationalitiesAccesingFpServices(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+	}
+
+	public CohortIndicator cbOtherNationalitiesAccesingMCHServices() {
+		return cohortIndicator("Number of other nationalities accessing MCH services",
+		    map(crossborderCohorts.cbOtherNationalitiesAccesingMCHServices(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+	}
+
+	public CohortIndicator cbOtherNationalitiesAccesingHIVServices() {
+		return cohortIndicator("Number of other nationalities accessing HIV services",
+		    map(crossborderCohorts.cbOtherNationalitiesAccesingHIVServices(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+	}
+
+	
+	public CohortIndicator cbOtherNationalitiesAccesingTBServices() {
+		return cohortIndicator("Number of other nationalities accessing TB services",
+		    map(crossborderCohorts.cbOtherNationalitiesAccesingTBServices(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
 	public CohortIndicator cbResidentOtherCounties() {
@@ -27,9 +43,19 @@ public class CrossborderIndicatorLibrary {
 		    map(crossborderCohorts.cbResidentOtherCounties(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator cbTravelledOtherCountry() {
-		return cohortIndicator("Number reporting travelled to another country last 3/6/12 months",
-		    map(crossborderCohorts.cbTravelledOtherCountry(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+	public CohortIndicator cbTravelledOtherCountryLastThreeMonths() {
+		return cohortIndicator("Number reporting travelled to another country last 3 months",
+		    map(crossborderCohorts.cbTravelledOtherCountryLastThreeMonths(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+	}
+
+	public CohortIndicator cbTravelledOtherCountryLastSixMonths() {
+		return cohortIndicator("Number reporting travelled to another country last 6 months",
+		    map(crossborderCohorts.cbTravelledOtherCountryLastSixMonths(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+	}
+
+	public CohortIndicator cbTravelledOtherCountryLastTwelveMonths() {
+		return cohortIndicator("Number reporting travelled to another country last 12 months",
+		    map(crossborderCohorts.cbTravelledOtherCountryLastTwelveMonths(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
 	public CohortIndicator receivedHivTestResults() {
@@ -40,12 +66,12 @@ public class CrossborderIndicatorLibrary {
 	
 	public CohortIndicator initiatedOnTreatment() {
 		return cohortIndicator("TX-New:# of individuals newly initiated on Treatment",
-		    map(crossborderCohorts.initiatedOnTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbInitiatedOnTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
 	public CohortIndicator testedHivPositive() {
 		return cohortIndicator("TX-POS: # of individuals who tested HIV positive",
-		    map(crossborderCohorts.testedHivPositive(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbTestedHivPositive(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
 	public CohortIndicator returnVisits() {
@@ -55,7 +81,7 @@ public class CrossborderIndicatorLibrary {
 	
 	public CohortIndicator receivingTreatment() {
 		return cohortIndicator("TX-CURR: of adults and children currently receiving ART",
-		    map(crossborderCohorts.receivingTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbReceivingTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
 	public CohortIndicator virallySuppressed() {
@@ -86,7 +112,7 @@ public class CrossborderIndicatorLibrary {
 
 	public CohortIndicator withPresumptiveTb() {
 		return cohortIndicator("% of individuals with presumptive TB",
-		    map(crossborderCohorts.withPresumptiveTb(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbWithPresumptiveTb(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 
 	public CohortIndicator investigatedForTbByMicroscopy() {
@@ -121,7 +147,7 @@ public class CrossborderIndicatorLibrary {
 
 	public CohortIndicator initiatedOnTbTreatment() {
 		return cohortIndicator("% of individuals Initiated on TB treatment",
-		    map(crossborderCohorts.initiatedOnTbTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbInitiatedOnTbTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 
 	public CohortIndicator clientsActiveOnTbTreatmentOneMonth() {
@@ -201,17 +227,17 @@ public class CrossborderIndicatorLibrary {
 
 	public CohortIndicator indexClients() {
 		return cohortIndicator("% of index clients (positives)",
-		    map(crossborderCohorts.indexClients(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbIndexClients(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 
 	public CohortIndicator agreedForContactElicitation() {
 		return cohortIndicator("% of individuals agreed for contact elicitation",
-		    map(crossborderCohorts.agreedForContactElicitation(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbAgreedForContactElicitation(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 
 	public CohortIndicator contactsElicited() {
 		return cohortIndicator("%  of contacts elicited",
-		    map(crossborderCohorts.contactsElicited(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbContactsElicited(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
 
@@ -227,7 +253,7 @@ public class CrossborderIndicatorLibrary {
 
 	public CohortIndicator contactsTestingHiv() {
 		return cohortIndicator("%  of contacts testing HIV (PNS +)",
-		    map(crossborderCohorts.contactsTestingHiv(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
+		    map(crossborderCohorts.cbContactsTestingHiv(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 
 	public CohortIndicator PnsYield() {
