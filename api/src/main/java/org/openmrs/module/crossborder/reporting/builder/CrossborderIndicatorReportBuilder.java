@@ -19,6 +19,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Concept;
+import org.openmrs.module.crossborder.reporting.library.CrossborderIndicatorLibrary;
 import org.openmrs.module.kenyacore.report.ReportDescriptor;
 import org.openmrs.module.kenyacore.report.ReportUtils;
 import org.openmrs.module.kenyacore.report.builder.AbstractReportBuilder;
@@ -28,7 +29,6 @@ import org.openmrs.module.kenyaemr.reporting.ColumnParameters;
 import org.openmrs.module.kenyaemr.reporting.EmrReportingUtils;
 import org.openmrs.module.kenyaemr.reporting.library.moh731.Moh731IndicatorLibrary;
 import org.openmrs.module.kenyaemr.reporting.library.shared.common.CommonDimensionLibrary;
-import org.openmrs.module.kenyaemr.reporting.library.shared.crossborder.CrossborderIndicatorLibrary;
 import org.openmrs.module.kenyaemr.reporting.library.shared.hiv.HivIndicatorLibrary;
 import org.openmrs.module.kenyaemr.reporting.library.shared.hiv.art.ArtIndicatorLibrary;
 import org.openmrs.module.kenyaemr.reporting.library.shared.tb.TbIndicatorLibrary;
@@ -110,12 +110,12 @@ public class CrossborderIndicatorReportBuilder extends AbstractReportBuilder {
 		String indParams = "startDate=${startDate},endDate=${endDate}";
 		
 		EmrReportingUtils.addRow(dsd, "CB1", "Number of other nationalities accessing specified services",
-		    ReportUtils.map(crossborderIndicators.cbOtherNationalities(), indParams), columns);
+		    ReportUtils.map(crossborderIndicators.cbOtherNationalitiesAccesingFPServices(), indParams), columns);
 		EmrReportingUtils.addRow(dsd, "CB2",
 		    "Number of residents of other districts/counties accessing services at the border facility",
 		    ReportUtils.map(crossborderIndicators.cbResidentOtherCounties(), indParams), columns);
 		EmrReportingUtils.addRow(dsd, "CB3", "Number reporting travelled to another country last 3/6/12 months",
-		    ReportUtils.map(crossborderIndicators.cbTravelledOtherCountry(), indParams), columns);
+		    ReportUtils.map(crossborderIndicators.cbTravelledOtherCountryLastSixMonths(), indParams), columns);
 		EmrReportingUtils
 		        .addRow(
 		            dsd,
