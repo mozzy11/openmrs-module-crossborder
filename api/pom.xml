@@ -119,7 +119,7 @@
 
 	</dependencies>
 
-	<build>
+	<!-- <build>
 		<finalName>${project.parent.artifactId}-${project.parent.version}</finalName>
 		<resources>
 			<resource>
@@ -159,8 +159,7 @@
 						<includeEmptyDirs>true</includeEmptyDirs>
 					</configuration>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
+				
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -244,5 +243,5 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>	
+	</build>	 -->
 </project>

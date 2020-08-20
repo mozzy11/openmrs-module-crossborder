@@ -7,7 +7,7 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
-package org.openmrs.module.crossborder.api;
+package org.openmrs.module.crossborder;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.openmrs.User;
 import org.openmrs.api.UserService;
-import org.openmrs.module.crossborder.Item;
 import org.openmrs.module.crossborder.api.dao.CrossbordermoduleforOpenMRSDao;
 import org.openmrs.module.crossborder.api.impl.CrossbordermoduleforOpenMRSServiceImpl;
 import static org.mockito.Mockito.*;

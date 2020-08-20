@@ -41,9 +41,9 @@ public class CrossborderCohortLibrary {
 	
 	@Autowired
 	private Moh731CohortLibrary moh731CohortLibrary;
-
-    @Autowired
-	DatimCohortLibrary datimCohortLibrary ;
+	
+	@Autowired
+	DatimCohortLibrary datimCohortLibrary;
 	
 	public CohortDefinition cbOtherNationalities() {
 		String sqlQuery = "" + "SELECT " + "	DISTINCT patient_id " + "FROM "
@@ -58,12 +58,10 @@ public class CrossborderCohortLibrary {
 		cd.setDescription("Patients of other nationalities");
 		return cd;
 	}
-
+	
 	public CohortDefinition otherNationalitiesAccesingFpServices() {
-		String sqlQuery = "SELECT DISTINCT patient_id " 
-		                 + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening" 
-		                 + "WHERE service = 'FP' "
-		                 + "AND visit_date BETWEEN :startDate AND :endDate";
+		String sqlQuery = "SELECT DISTINCT patient_id " + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening"
+		        + "WHERE service = 'FP' " + "AND visit_date BETWEEN :startDate AND :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("patientsOfOtherNationalitiesFP");
@@ -74,7 +72,6 @@ public class CrossborderCohortLibrary {
 		return cd;
 	}
 	
-
 	public CohortDefinition cbOtherNationalitiesAccesingFpServices() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("CrossborderpatientAccesingFPservices");
@@ -87,14 +84,9 @@ public class CrossborderCohortLibrary {
 		return cd;
 	}
 	
-
-
-	
 	public CohortDefinition otherNationalitiesAccesingMCHServices() {
-		String sqlQuery = "SELECT DISTINCT patient_id " 
-		                 + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening" 
-		                 + "WHERE service = 'MCH' "
-		                 + "AND visit_date BETWEEN :startDate AND :endDate";
+		String sqlQuery = "SELECT DISTINCT patient_id " + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening"
+		        + "WHERE service = 'MCH' " + "AND visit_date BETWEEN :startDate AND :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("patientsOfOtherNationalitiesMCH");
@@ -104,7 +96,7 @@ public class CrossborderCohortLibrary {
 		cd.setDescription("Patients of other nationalities");
 		return cd;
 	}
-
+	
 	public CohortDefinition cbOtherNationalitiesAccesingMCHServices() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("CrossBorderPatientAccesingMCHServices");
@@ -116,12 +108,10 @@ public class CrossborderCohortLibrary {
 		cd.setCompositionString("crossborder AND AccesMCHservices");
 		return cd;
 	}
-
+	
 	public CohortDefinition otherNationalitiesAccesingHIVServices() {
-		String sqlQuery = "SELECT DISTINCT patient_id " 
-		                 + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening" 
-		                 + "WHERE service = 'HIV' "
-		                 + "AND visit_date BETWEEN :startDate AND :endDate";
+		String sqlQuery = "SELECT DISTINCT patient_id " + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening"
+		        + "WHERE service = 'HIV' " + "AND visit_date BETWEEN :startDate AND :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("patientsOfOtherNationalitiesHIV");
@@ -131,8 +121,7 @@ public class CrossborderCohortLibrary {
 		cd.setDescription("Patients of other nationalities");
 		return cd;
 	}
-
-
+	
 	public CohortDefinition cbOtherNationalitiesAccesingHIVServices() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("CrossborderPatientsAccesingHIVServices");
@@ -144,13 +133,10 @@ public class CrossborderCohortLibrary {
 		cd.setCompositionString("crossborder AND AccesHIVservices");
 		return cd;
 	}
-
-
+	
 	public CohortDefinition otherNationalitiesAccesingTBServices() {
-		String sqlQuery = "SELECT DISTINCT patient_id " 
-		                 + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening" 
-		                 + "WHERE service = 'TB' "
-		                 + "AND visit_date BETWEEN :startDate AND :endDate";
+		String sqlQuery = "SELECT DISTINCT patient_id " + "FROM kenyaemr_etl.elt_crossborder_mobiilty_screening"
+		        + "WHERE service = 'TB' " + "AND visit_date BETWEEN :startDate AND :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("patientsOfOtherNationalitiesTB");
@@ -160,7 +146,7 @@ public class CrossborderCohortLibrary {
 		cd.setDescription("Patients of other nationalities");
 		return cd;
 	}
-
+	
 	public CohortDefinition cbOtherNationalitiesAccesingTBServices() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("CrossborderpatientAccesingTBservices");
@@ -206,13 +192,10 @@ public class CrossborderCohortLibrary {
 		return cd;
 		
 	}
-
+	
 	public CohortDefinition travelledOtherCountryLastThreeMonths() {
-		String sqlQuery = ""
-		        + "SELECT 	DISTINCT patient_id"
-		        + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
-		        + "WHERE `travelled_in_last_3_months` = 'Yes'"
-		        + "AND visit_date BETWEEN :startDate AND :endDate";
+		String sqlQuery = "" + "SELECT 	DISTINCT patient_id" + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
+		        + "WHERE `travelled_in_last_3_months` = 'Yes'" + "AND visit_date BETWEEN :startDate AND :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("travelledOtherCountryLastThreeMonths");
@@ -223,7 +206,7 @@ public class CrossborderCohortLibrary {
 		return cd;
 		
 	}
-
+	
 	public CohortDefinition cbTravelledOtherCountryLastThreeMonths() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("travelledOtherCountryLastThreeMonths");
@@ -235,13 +218,10 @@ public class CrossborderCohortLibrary {
 		cd.setCompositionString("crossborder AND TravelledLastThreeMonths");
 		return cd;
 	}
-
+	
 	public CohortDefinition travelledOtherCountryLastSixMonths() {
-		String sqlQuery = ""
-		        + "SELECT 	DISTINCT patient_id"
-		        + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
-		        + "WHERE `travelled_in_last_6_months` = 'Yes'"
-		        + "AND visit_date BETWEEN :startDate AND :endDate";
+		String sqlQuery = "" + "SELECT 	DISTINCT patient_id" + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
+		        + "WHERE `travelled_in_last_6_months` = 'Yes'" + "AND visit_date BETWEEN :startDate AND :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("travelledOtherCountryLstSixMonths");
@@ -252,7 +232,7 @@ public class CrossborderCohortLibrary {
 		return cd;
 		
 	}
-
+	
 	public CohortDefinition cbTravelledOtherCountryLastSixMonths() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("travelledOtherCountryLastSixMonths");
@@ -264,13 +244,10 @@ public class CrossborderCohortLibrary {
 		cd.setCompositionString("crossborder AND TravelledLastSixMonths");
 		return cd;
 	}
-
+	
 	public CohortDefinition travelledOtherCountryLastTwelveMonths() {
-		String sqlQuery = ""
-		        + "SELECT 	DISTINCT patient_id"
-		        + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
-		        + "WHERE `travelled_in_last_12_months` = 'Yes'"
-		        + "AND visit_date BETWEEN :startDate AND :endDate";
+		String sqlQuery = "" + "SELECT 	DISTINCT patient_id" + "FROM	kenyaemr_etl.etl_crossborder_mobility_screening "
+		        + "WHERE `travelled_in_last_12_months` = 'Yes'" + "AND visit_date BETWEEN :startDate AND :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("travelledOtherCountryLastTwelveMonths");
@@ -281,7 +258,7 @@ public class CrossborderCohortLibrary {
 		return cd;
 		
 	}
-
+	
 	public CohortDefinition cbTravelledOtherCountryLastTwelveMonths() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("travelledOtherCountryLastTwelveMonths");
@@ -318,23 +295,21 @@ public class CrossborderCohortLibrary {
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
 		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
-		cd.addSearch("receivedHivTestResults",
-		    ReportUtils.map(htsClientsdefiniton, ""));
+		cd.addSearch("receivedHivTestResults", ReportUtils.map(htsClientsdefiniton, ""));
 		cd.setCompositionString("crossborder AND receivedHivTestResults");
 		return cd;
 	}
 	
 	public CohortDefinition cbInitiatedOnTreatment() {
-        ETLNewHivEnrollmentCohortDefinition newHivEnrollmentCohortDefinition  = new ETLNewHivEnrollmentCohortDefinition(); 
+		ETLNewHivEnrollmentCohortDefinition newHivEnrollmentCohortDefinition = new ETLNewHivEnrollmentCohortDefinition();
 		newHivEnrollmentCohortDefinition.setName("innitiated On Treatment");
-
+		
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Cross border patient initit");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
 		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
-		cd.addSearch("initiatedTreatment",
-		    ReportUtils.map(newHivEnrollmentCohortDefinition, ""));
+		cd.addSearch("initiatedTreatment", ReportUtils.map(newHivEnrollmentCohortDefinition, ""));
 		cd.setCompositionString("crossborder AND initiatedTreatment");
 		return cd;
 		
@@ -349,8 +324,7 @@ public class CrossborderCohortLibrary {
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
 		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
-		cd.addSearch("hivPostiveResults",
-		    ReportUtils.map(htsPositiveResultsCorhortDefiniton, ""));
+		cd.addSearch("hivPostiveResults", ReportUtils.map(htsPositiveResultsCorhortDefiniton, ""));
 		cd.setCompositionString("crossborder AND hivPostiveResults");
 		return cd;
 	}
@@ -359,22 +333,21 @@ public class CrossborderCohortLibrary {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
 	
 	public CohortDefinition cbReceivingTreatment() {
-		ETLCurrentOnARTCohortDefinition currentOnArtCohortDefinition  = new ETLCurrentOnARTCohortDefinition(); 
+		ETLCurrentOnARTCohortDefinition currentOnArtCohortDefinition = new ETLCurrentOnARTCohortDefinition();
 		currentOnArtCohortDefinition.setName("Cuurent On ART");
-
+		
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Cross border patient initit");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
 		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
-		cd.addSearch("currentOnArt",
-		    ReportUtils.map(currentOnArtCohortDefinition, ""));
+		cd.addSearch("currentOnArt", ReportUtils.map(currentOnArtCohortDefinition, ""));
 		cd.setCompositionString("crossborder AND currentOnArt");
 		return cd;
 	}
@@ -383,8 +356,8 @@ public class CrossborderCohortLibrary {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
 	
@@ -392,8 +365,8 @@ public class CrossborderCohortLibrary {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
 	
@@ -401,8 +374,8 @@ public class CrossborderCohortLibrary {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
 	
@@ -410,8 +383,8 @@ public class CrossborderCohortLibrary {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
 	
@@ -419,16 +392,14 @@ public class CrossborderCohortLibrary {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition withPresumptiveTb() {
-		String sqlQuery = "SELECT patient_id"
-						  + "FROM kenyaemr_datatools.tb_screening "
-						  +"WHERE resulting_tb_status = 'Presumed TB' "
-						  +"AND visit_date BETWEEN :startDate and :endDate";
+		String sqlQuery = "SELECT patient_id" + "FROM kenyaemr_datatools.tb_screening "
+		        + "WHERE resulting_tb_status = 'Presumed TB' " + "AND visit_date BETWEEN :startDate and :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("with Presumptive tb Treatment");
@@ -438,78 +409,75 @@ public class CrossborderCohortLibrary {
 		cd.setDescription("with Presumptive tb Treatment");
 		return cd;
 	}
-
+	
 	public CohortDefinition cbWithPresumptiveTb() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("presumptive TB");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
 		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
-		cd.addSearch("presumptiveTB",
-		    ReportUtils.map(withPresumptiveTb(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("presumptiveTB", ReportUtils.map(withPresumptiveTb(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
 		cd.setCompositionString("crossborder AND presumptiveTB");
 		return cd;
 	}
-
+	
 	public CohortDefinition investigatedForTbByMicroscopy() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition investigatedForTbByXray() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition investigatedForTbByGeneXpert() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition investigatedForTbByCulture() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition testingTbPostive() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
-
+	
 	public CohortDefinition withDrugTbResistance() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition initiatedOnTbTreatment() {
-		String sqlQuery = "SELECT patient_id "
-						  +"FROM kenyaemr_datatools.tb_enrollment "
-						  +"WHERE date_treatment_started BETWEEN :startDate and :endDate";
+		String sqlQuery = "SELECT patient_id " + "FROM kenyaemr_datatools.tb_enrollment "
+		        + "WHERE date_treatment_started BETWEEN :startDate and :endDate";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("innitiated on tb Treatment");
@@ -519,7 +487,7 @@ public class CrossborderCohortLibrary {
 		cd.setDescription("innitiated on tb Treatmentt");
 		return cd;
 	}
-
+	
 	public CohortDefinition cbInitiatedOnTbTreatment() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Innitiated on TB Treatment");
@@ -531,143 +499,143 @@ public class CrossborderCohortLibrary {
 		cd.setCompositionString("crossborder AND innitiatedTBTreatment");
 		return cd;
 	}
-
+	
 	public CohortDefinition clientsActiveOnTbTreatmentOneMonth() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition clientsActiveOnTbTreatmentTwoMonths() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition clientsActiveOnTbTreatmentThreeMonths() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition clientsActiveOnTbTreatmentFourMonths() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition clientsActiveOnTbTreatmentFiveMonths() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition clientsActiveOnTbTreatmentSixToTwelveMonths() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition treatmentOutComeCured() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition treatmentOutComeCompletedTreatment() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition treatmentOutComeTransferredOut() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition treatmentOutComeTreatmentFailure() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition treatmentOutComeDead() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition treatmentOutComeLtfu() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition counsellingVistForFp() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition recievingFp() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
+	
 	public CohortDefinition trainedInMaternalAndChildCare() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
-	public CohortDefinition cbIndexClients(){
+	
+	public CohortDefinition cbIndexClients() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Index Clients");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
@@ -678,9 +646,8 @@ public class CrossborderCohortLibrary {
 		cd.setCompositionString("crossborder AND indexClients");
 		return cd;
 	}
-
-
-	public CohortDefinition cbAgreedForContactElicitation(){
+	
+	public CohortDefinition cbAgreedForContactElicitation() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Agrred For Contact Eliciation");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
@@ -691,12 +658,11 @@ public class CrossborderCohortLibrary {
 		cd.setCompositionString("crossborder AND contactEliciation");
 		return cd;
 	}
-
-	public CohortDefinition contactsElicited(){
+	
+	public CohortDefinition contactsElicited() {
 		String sqlQuery = "SELECT c.id from kenyaemr_hiv_testing_patient_contact c "
-		+"WHERE c.relationship_type in(971, 972, 1528, 162221, 163565, 970, 5617) "
-		+"AND c.voided = 0 "
-		+"AND date(c.date_created) BETWEEN date_sub( date(:endDate), INTERVAL  3 MONTH )and date(:endDate)";
+		        + "WHERE c.relationship_type in(971, 972, 1528, 162221, 163565, 970, 5617) " + "AND c.voided = 0 "
+		        + "AND date(c.date_created) BETWEEN date_sub( date(:endDate), INTERVAL  3 MONTH )and date(:endDate)";
 		
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		cd.setName("Contacts Elicited");
@@ -706,38 +672,37 @@ public class CrossborderCohortLibrary {
 		cd.setDescription("Contact Elicited");
 		return cd;
 	}
-
-	public CohortDefinition cbContactsElicited(){
+	
+	public CohortDefinition cbContactsElicited() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Contact Elicited");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
 		cd.addSearch("crossborder", ReportUtils.map(crossborderPatients(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
-		cd.addSearch("ContactElicited",
-		    ReportUtils.map(contactsElicited(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
+		cd.addSearch("ContactElicited", ReportUtils.map(contactsElicited(), "startDate=${onOrAfter},endDate=${onOrBefore}"));
 		cd.setCompositionString("crossborder AND ContactElicited");
 		return cd;
 	}
-
-	public CohortDefinition contactsEligible(){
+	
+	public CohortDefinition contactsEligible() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
 	
-	public CohortDefinition contactsElicitedTested(){
+	public CohortDefinition contactsElicitedTested() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
-	public CohortDefinition cbContactsTestingHiv(){
+	
+	public CohortDefinition cbContactsTestingHiv() {
 		CompositionCohortDefinition cd = new CompositionCohortDefinition();
 		cd.setName("Contacts Testing Hiv");
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
@@ -748,229 +713,220 @@ public class CrossborderCohortLibrary {
 		cd.setCompositionString("crossborder AND contactTestingHIV");
 		return cd;
 	}
-
 	
-	public CohortDefinition PnsYield(){
+	public CohortDefinition PnsYield() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-	
-
-	public CohortDefinition contactsInnitatedOnTreatment(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition clientsBookedForAppointment(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition clientsWhoKeptAppointments(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition clientsWhoMissedAppointments(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition clientsWhoMissedAppointmentsAndReturnedToCare(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition clientsWhoMissedAppointmentsAndSelfTransferred(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition clientsWhoStoppedTreatment(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	
-	public CohortDefinition clientsWhoMissedAppointmentsDied(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	
-	public CohortDefinition  LTFUselfTransferred(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	
-	public CohortDefinition reportedAsStopedCurrentlyOnTreatment(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition LTFUstoppedTreatment(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition LTFUdied(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-
-	public CohortDefinition LTFUtraced(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	
-	public CohortDefinition LTFUrestartedArt(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	
-	public CohortDefinition newOnTreatment(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition transferIn(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	
-	public CohortDefinition transferOut(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition recievedThreeMonthsSubscription(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition clientsTransitionedToTLD(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition clientsDueForViralLoad(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
-		return cd;
-	}
-
-	public CohortDefinition VLsamplesCollectedFromClientsAttendingClinic(){
-		EncounterCohortDefinition cd = new EncounterCohortDefinition();
-		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
-		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
 	
-	public CohortDefinition VLresultsRecieved(){
+	public CohortDefinition contactsInnitatedOnTreatment() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
-
-	public CohortDefinition VLresultsSuppressed(){
+	
+	public CohortDefinition clientsBookedForAppointment() {
 		EncounterCohortDefinition cd = new EncounterCohortDefinition();
 		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
 		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
-		cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
-		    CommonMetadata._EncounterType.CROSS_BORDER)));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition clientsWhoKeptAppointments() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition clientsWhoMissedAppointments() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition clientsWhoMissedAppointmentsAndReturnedToCare() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition clientsWhoMissedAppointmentsAndSelfTransferred() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition clientsWhoStoppedTreatment() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition clientsWhoMissedAppointmentsDied() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition LTFUselfTransferred() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition reportedAsStopedCurrentlyOnTreatment() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition LTFUstoppedTreatment() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition LTFUdied() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition LTFUtraced() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition LTFUrestartedArt() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition newOnTreatment() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition transferIn() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition transferOut() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition recievedThreeMonthsSubscription() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition clientsTransitionedToTLD() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition clientsDueForViralLoad() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition VLsamplesCollectedFromClientsAttendingClinic() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition VLresultsRecieved() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
+		return cd;
+	}
+	
+	public CohortDefinition VLresultsSuppressed() {
+		EncounterCohortDefinition cd = new EncounterCohortDefinition();
+		cd.addParameter(new Parameter("onOrAfter", "After Date", Date.class));
+		cd.addParameter(new Parameter("onOrBefore", "Before Date", Date.class));
+		/* cd.setEncounterTypeList(Collections.singletonList(MetadataUtils.existing(EncounterType.class,
+		    CommonMetadata._EncounterType.CROSS_BORDER))); */
 		return cd;
 	}
 }
