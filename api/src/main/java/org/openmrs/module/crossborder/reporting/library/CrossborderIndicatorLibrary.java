@@ -60,316 +60,316 @@ public class CrossborderIndicatorLibrary {
 		    map(crossborderCohorts.cbTravelledOtherCountryLastTwelveMonths(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator receivedHivTestResults() {
+	public CohortIndicator cbReceivedHivTestResults() {
 		return cohortIndicator(
 		    "TXT-HTS: # of individuals who received HIV testing services (HTS) and received their test results, disaggregated by HIV result",
 		    map(crossborderCohorts.cbReceivedHivTestResults(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator initiatedOnTreatment() {
+	public CohortIndicator cbInitiatedOnTreatment() {
 		return cohortIndicator("TX-New:# of individuals newly initiated on Treatment",
 		    map(crossborderCohorts.cbInitiatedOnTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator testedHivPositive() {
+	public CohortIndicator cbTestedHivPositive() {
 		return cohortIndicator("TX-POS: # of individuals who tested HIV positive",
 		    map(crossborderCohorts.cbTestedHivPositive(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator returnVisits() {
+	public CohortIndicator cbReturnVisits() {
 		return cohortIndicator("TX-SV:  who returned for second visit",
 		    map(crossborderCohorts.returnVisits(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator receivingTreatment() {
+	public CohortIndicator cbReceivingTreatment() {
 		return cohortIndicator("TX-CURR: of adults and children currently receiving ART",
 		    map(crossborderCohorts.cbReceivingTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator virallySuppressed() {
+	public CohortIndicator cbVirallySuppressed() {
 		return cohortIndicator(
 		    "TX-PLVS: % of ART patients with a viral load result documented in the medical record and/or laboratory information systems (LIS) within the past 12 months with a suppressed viral load (<400 copies/ml)",
 		    map(crossborderCohorts.virallySuppressed(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator retainedOnTreatmentAfterOneMonth() {
+	public CohortIndicator cbRetainedOnTreatmentAfterOneMonth() {
 		return cohortIndicator("% of adults and children known to be on treatment 1 months after initiation of ART",
 		    map(crossborderCohorts.retainedOnTreatmentAfterOneMonth(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator retainedOnTreatmentAfter6Months() {
+	public CohortIndicator cbRetainedOnTreatmentAfter6Months() {
 		return cohortIndicator("% of adults and children known to be on treatment 6 months after initiation of ART",
 		    map(crossborderCohorts.retainedOnTreatmentAfter6Months(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator retainedOnTreatmentAfter3Months() {
+	public CohortIndicator cbRetainedOnTreatmentAfter3Months() {
 		return cohortIndicator("% of adults and children known to be on treatment 3 months after initiation of ART",
 		    map(crossborderCohorts.retainedOnTreatmentAfter3Months(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator retainedOnTreatmentAfter12Months() {
+	public CohortIndicator cbRetainedOnTreatmentAfter12Months() {
 		return cohortIndicator("% of adults and children known to be on treatment 12 months after initiation of ART",
 		    map(crossborderCohorts.retainedOnTreatmentAfter12Months(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator withPresumptiveTb() {
+	public CohortIndicator cbWithPresumptiveTb() {
 		return cohortIndicator("% of individuals with presumptive TB",
 		    map(crossborderCohorts.cbWithPresumptiveTb(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator investigatedForTbByMicroscopy() {
+	public CohortIndicator cbInvestigatedForTbByMicroscopy() {
 		return cohortIndicator(
-		    "Number investigated for TB (Disaggregataed by method - Microscopy, X-ray, Gene-Xpert, Culture etc)",
+		    "Number investigated for TB (Disaggregataed by method - Microscopy,)",
 		    map(crossborderCohorts.investigatedForTbByMicroscopy(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator investigatedForTbByXray() {
+	public CohortIndicator cbInvestigatedForTbByXray() {
 		return cohortIndicator(
-		    "Number investigated for TB (Disaggregataed by method - Microscopy, X-ray, Gene-Xpert, Culture etc)",
+		    "Number investigated for TB (Disaggregataed by method - ,X-ray)",
 		    map(crossborderCohorts.investigatedForTbByXray(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator investigatedForTbByGeneXpert() {
+	public CohortIndicator cbInvestigatedForTbByGeneXpert() {
 		return cohortIndicator(
-		    "Number investigated for TB (Disaggregataed by method - Microscopy, X-ray, Gene-Xpert, Culture etc)",
+		    "Number investigated for TB (Disaggregataed by method - Gene-Xpert)",
 		    map(crossborderCohorts.investigatedForTbByGeneXpert(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator investigatedForTbByCulture() {
+	public CohortIndicator cbInvestigatedForTbByCulture() {
 		return cohortIndicator(
-		    "Number investigated for TB (Disaggregataed by method - Microscopy, X-ray, Gene-Xpert, Culture etc)",
+		    "Number investigated for TB (Disaggregataed by method -  Culture )",
 		    map(crossborderCohorts.investigatedForTbByCulture(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator testingTbPostive() {
+	public CohortIndicator cbTestingTbPostive() {
 		return cohortIndicator("% of individuals Testing TB positive",
 		    map(crossborderCohorts.testingTbPostive(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator withDrugTbResistance() {
-		return cohortIndicator("%  of individuals with TB drug resistance	",
+	public CohortIndicator cbWithDrugTbResistance() {
+		return cohortIndicator("%  of individuals with TB drug resistance",
 		    map(crossborderCohorts.withDrugTbResistance(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator initiatedOnTbTreatment() {
+	public CohortIndicator cbInitiatedOnTbTreatment() {
 		return cohortIndicator("% of individuals Initiated on TB treatment",
 		    map(crossborderCohorts.cbInitiatedOnTbTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsActiveOnTbTreatmentOneMonth() {
+	public CohortIndicator cbClientsActiveOnTbTreatmentOneMonth() {
 		return cohortIndicator("% of Clients active on TB treatment 1 month",
 		    map(crossborderCohorts.clientsActiveOnTbTreatmentOneMonth(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsActiveOnTbTreatmentTwoMonths() {
+	public CohortIndicator cbClientsActiveOnTbTreatmentTwoMonths() {
 		return cohortIndicator("%  of Clients active on TB treatment 2 months",
 		    map(crossborderCohorts.clientsActiveOnTbTreatmentTwoMonths(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsActiveOnTbTreatmentThreeMonths() {
+	public CohortIndicator cbClientsActiveOnTbTreatmentThreeMonths() {
 		return cohortIndicator("% of Clients active on TB treatment 3 months",
 		    map(crossborderCohorts.clientsActiveOnTbTreatmentThreeMonths(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsActiveOnTbTreatmentFourMonths() {
+	public CohortIndicator cbClientsActiveOnTbTreatmentFourMonths() {
 		return cohortIndicator("% of Clients active on TB treatment 4 months",
 		    map(crossborderCohorts.clientsActiveOnTbTreatmentFourMonths(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsActiveOnTbTreatmentFiveMonths() {
+	public CohortIndicator cbClientsActiveOnTbTreatmentFiveMonths() {
 		return cohortIndicator("% of Clients active on TB treatment 5 months",
 		    map(crossborderCohorts.clientsActiveOnTbTreatmentFiveMonths(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsActiveOnTbTreatmentSixToTwelveMonths() {
+	public CohortIndicator cbClientsActiveOnTbTreatmentSixToTwelveMonths() {
 		return cohortIndicator(
 		    "% of Clients active on TB treatment 6-12 months",
 		    map(crossborderCohorts.clientsActiveOnTbTreatmentSixToTwelveMonths(),
 		        "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator treatmentOutComeCured() {
+	public CohortIndicator cbTreatmentOutComeCured() {
 		return cohortIndicator("% of individuals with TreatMent OutCome Cured",
 		    map(crossborderCohorts.treatmentOutComeCured(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator treatmentOutComeCompletedTreatment() {
+	public CohortIndicator cbTreatmentOutComeCompletedTreatment() {
 		return cohortIndicator("% of individuals with TreatMent OutCome Completed Treatment",
 		    map(crossborderCohorts.treatmentOutComeCompletedTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator treatmentOutComeTransferredOut() {
+	public CohortIndicator cbTreatmentOutComeTransferredOut() {
 		return cohortIndicator("% of individuals with TreatMent OutCome Transferred Out",
 		    map(crossborderCohorts.treatmentOutComeTransferredOut(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator treatmentOutComeTreatmentFailure() {
+	public CohortIndicator cbTreatmentOutComeTreatmentFailure() {
 		return cohortIndicator("% of individuals with TreatMent OutCome Treatment Failure",
 		    map(crossborderCohorts.treatmentOutComeTreatmentFailure(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator treatmentOutComeDead() {
+	public CohortIndicator cbTreatmentOutComeDead() {
 		return cohortIndicator("% of individuals with TreatMent OutCome Dead",
 		    map(crossborderCohorts.treatmentOutComeDead(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator treatmentOutComeLtfu() {
+	public CohortIndicator cbTreatmentOutComeLtfu() {
 		return cohortIndicator("% of individuals with TreatMent LTFU",
 		    map(crossborderCohorts.treatmentOutComeLtfu(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator counsellingVistForFp() {
+	public CohortIndicator cbCounsellingVistForFp() {
 		return cohortIndicator("% of individuals for counselling visits for FP/RH as a result of USG assistance",
 		    map(crossborderCohorts.counsellingVistForFp(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator recievingFp() {
+	public CohortIndicator cbRecievingFp() {
 		return cohortIndicator("% of individuals receiving FP counselling services and were given any method",
 		    map(crossborderCohorts.recievingFp(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator trainedInMaternalAndChildCare() {
+	public CohortIndicator cbTrainedInMaternalAndChildCare() {
 		return cohortIndicator("% of individuals trained in maternal and child health care",
 		    map(crossborderCohorts.trainedInMaternalAndChildCare(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator indexClients() {
+	public CohortIndicator cbIndexClients() {
 		return cohortIndicator("% of index clients (positives)",
 		    map(crossborderCohorts.cbIndexClients(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator agreedForContactElicitation() {
+	public CohortIndicator cbAgreedForContactElicitation() {
 		return cohortIndicator("% of individuals agreed for contact elicitation",
 		    map(crossborderCohorts.cbAgreedForContactElicitation(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator contactsElicited() {
+	public CohortIndicator cbContactsElicited() {
 		return cohortIndicator("%  of contacts elicited",
 		    map(crossborderCohorts.cbContactsElicited(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator contactsEligible() {
+	public CohortIndicator cbContactsEligible() {
 		return cohortIndicator("%  of contacts eligible",
 		    map(crossborderCohorts.contactsEligible(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator contactsElicitedTested() {
+	public CohortIndicator cbContactsElicitedTested() {
 		return cohortIndicator("%  of contacts elicited Tested",
 		    map(crossborderCohorts.contactsElicitedTested(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator contactsTestingHiv() {
+	public CohortIndicator cbContactsTestingHiv() {
 		return cohortIndicator("%  of contacts testing HIV (PNS +)",
 		    map(crossborderCohorts.cbContactsTestingHiv(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator PnsYield() {
+	public CohortIndicator cbPnsYield() {
 		return cohortIndicator("PNS yield",
 		    map(crossborderCohorts.PnsYield(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator contactsInnitatedOnTreatment() {
+	public CohortIndicator cbContactsInnitatedOnTreatment() {
 		return cohortIndicator("% of contacts initiated on treatment",
 		    map(crossborderCohorts.contactsInnitatedOnTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsBookedForAppointment() {
+	public CohortIndicator cbClientsBookedForAppointment() {
 		return cohortIndicator("% of clients booked for appointments",
 		    map(crossborderCohorts.clientsBookedForAppointment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsWhoKeptAppointments() {
-		return cohortIndicator("% of clients booked for appointments",
+	public CohortIndicator cbClientsWhoKeptAppointments() {
+		return cohortIndicator("% of clients eho kept appointments",
 		    map(crossborderCohorts.clientsWhoKeptAppointments(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsWhoMissedAppointments() {
+	public CohortIndicator cbClientsWhoMissedAppointments() {
 		return cohortIndicator("% of clients who missed appointments traced",
 		    map(crossborderCohorts.clientsWhoMissedAppointments(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsWhoMissedAppointmentsAndReturnedToCare() {
+	public CohortIndicator cbClientsWhoMissedAppointmentsAndReturnedToCare() {
 		return cohortIndicator(
 		    "% of clients who missed appointments And returned to Care",
 		    map(crossborderCohorts.clientsWhoMissedAppointmentsAndReturnedToCare(),
 		        "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsWhoMissedAppointmentsAndSelfTransferred() {
+	public CohortIndicator cbClientsWhoMissedAppointmentsAndSelfTransferred() {
 		return cohortIndicator(
 		    "%  of clients who missed appointments who self-transferred",
 		    map(crossborderCohorts.clientsWhoMissedAppointmentsAndSelfTransferred(),
 		        "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsWhoStoppedTreatment() {
+	public CohortIndicator cbClientsWhoStoppedTreatment() {
 		return cohortIndicator("% of clients who stopped treatment",
 		    map(crossborderCohorts.clientsWhoStoppedTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsWhoMissedAppointmentsDied() {
-		return cohortIndicator("% of clients who missed appointments traced who died",
+	public CohortIndicator cbClientsWhoMissedAppointmentsDied() {
+		return cohortIndicator("% of clients who missed appointments who died",
 		    map(crossborderCohorts.clientsWhoMissedAppointmentsDied(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator LTFUselfTransferred() {
-		return cohortIndicator("% # of LTFU who self-transferred",
+	public CohortIndicator cbLTFUselfTransferred() {
+		return cohortIndicator("%  of LTFU who self-transferred",
 		    map(crossborderCohorts.LTFUselfTransferred(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator reportedAsStopedCurrentlyOnTreatment() {
+	public CohortIndicator cbReportedAsStopedCurrentlyOnTreatment() {
 		return cohortIndicator(
 		    "%  of clients reported as stopped who currently are on treatment in the facility (data error)",
 		    map(crossborderCohorts.reportedAsStopedCurrentlyOnTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator LTFUstoppedTreatment() {
-		return cohortIndicator("%  of LTFU who Stopped Treatment",
+	public CohortIndicator cbLTFUstoppedTreatment() {
+		return cohortIndicator("% of LTFU who Stopped Treatment",
 		    map(crossborderCohorts.LTFUstoppedTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator LTFUdied() {
+	public CohortIndicator cbLTFUdied() {
 		return cohortIndicator("% of LTFU who died",
 		    map(crossborderCohorts.LTFUdied(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator LTFUtraced() {
+	public CohortIndicator cbLTFUtraced() {
 		return cohortIndicator("% of LTFU traced",
 		    map(crossborderCohorts.LTFUtraced(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator LTFUrestartedArt() {
+	public CohortIndicator cbLTFUrestartedArt() {
 		return cohortIndicator("% of LTFU restarted ART",
 		    map(crossborderCohorts.LTFUrestartedArt(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator newOnTreatment() {
-		return cohortIndicator("No. new on treatment",
+	public CohortIndicator cbNewOnTreatment() {
+		return cohortIndicator("Number new on treatment",
 		    map(crossborderCohorts.newOnTreatment(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator transferIn() {
+	public CohortIndicator cbTransferIn() {
 		return cohortIndicator("Transfer In",
 		    map(crossborderCohorts.transferIn(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator transferOut() {
-		return cohortIndicator("Transfer In",
+	public CohortIndicator cbTransferOut() {
+		return cohortIndicator("Transfer Out",
 		    map(crossborderCohorts.transferOut(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator recievedThreeMonthsSubscription() {
+	public CohortIndicator cbRecievedThreeMonthsSubscription() {
 		return cohortIndicator(
 		    "No. of patients who received 3 months prescription (for Stable clients attending clinic today)",
 		    map(crossborderCohorts.recievedThreeMonthsSubscription(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsTransitionedToTLD() {
+	public CohortIndicator cbClientsTransitionedToTLD() {
 		return cohortIndicator("No. of clients transitioned to TLD",
 		    map(crossborderCohorts.clientsTransitionedToTLD(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
 	
-	public CohortIndicator clientsDueForViralLoad() {
+	public CohortIndicator cbClientsDueForViralLoad() {
 		return cohortIndicator("No. of clients due for viral load (from clients attending clinic today)",
 		    map(crossborderCohorts.clientsDueForViralLoad(), "onOrAfter=${startDate},onOrBefore=${endDate}"));
 	}
